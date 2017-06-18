@@ -21,4 +21,5 @@ For more information on how to this works with other frontends/backends, head ov
 
 > [TODO]
 
-# Circle CI
+# AppVeyor
+[![Build status](https://ci.appveyor.com/api/projects/status/bb4i7k724mutjxut?svg=true)](https://ci.appveyor.com/project/codeyu/nancy-realworld-example-app)

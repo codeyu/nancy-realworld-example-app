@@ -1,0 +1,26 @@
+version: '0.{build}'
+image: Visual Studio 2017
+
+init:
+- dotnet --info
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+cache:
+  - '%USERPROFILE%\.nuget\packages'    
+
+install:
+  - dir
+  - dotnet restore
+
+build_script:  
+  - dotnet publish src/NancyRealWorld/NancyRealWorld.csproj -c Release -f netcoreapp1.1 -r win10-x64
+
+test_script:
+  - dotnet test test/NancyRealWorld.Test/NancyRealWorld.Test.csproj
+
+
+deploy_script:  
+ - cd C:\projects\nancy-realworld-example-app
+ - ps: docker build -f docker/runtime-nanoserver.dockerfile -t "codeyu/nancy-realworld-example-app:nanoserver-$env:APPVEYOR_BUILD_NUMBER" .
+ - ps: docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+ - ps: docker push "codeyu/nancy-realworld-example-app:nanoserver-$env:APPVEYOR_BUILD_NUMBER"
