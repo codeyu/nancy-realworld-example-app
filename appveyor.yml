@@ -14,7 +14,7 @@ install:
   - dotnet restore
 
 build_script:  
-  - dotnet publish src/NancyRealWorld/NancyRealWorld.csproj -c Release -r win10-x64
+  - dotnet build src/NancyRealWorld/NancyRealWorld.csproj
 
 test_script:
   - dotnet test test/NancyRealWorld.Test/NancyRealWorld.Test.csproj
