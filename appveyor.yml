@@ -10,6 +10,7 @@ cache:
 
 install:
   - dir
+  - nuget sources add -Name "NancyFX bleeding edge builds" -Source https://www.myget.org/F/nancyfx/api/v3/index.json
   - dotnet restore
 
 build_script:  
