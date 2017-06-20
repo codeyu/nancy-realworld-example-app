@@ -5,9 +5,9 @@ using Nancy;
 
 namespace NancyRealWorld.Modules
 {
-    public class TagsModule : NancyModule
+    public class TagModule : NancyModule
     {
-        public TagsModule()
+        public TagModule()
         {
             Get("/tags", args => "TODO...");
         }

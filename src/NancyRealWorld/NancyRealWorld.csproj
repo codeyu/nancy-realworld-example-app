@@ -10,5 +10,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.2" />
     <PackageReference Include="Nancy" Version="2.0.0-Pre1868" />
+    <PackageReference Include="Nancy.Serialization.JsonNet" Version="2.0.0-Pre491" />
   </ItemGroup>
 </Project>
