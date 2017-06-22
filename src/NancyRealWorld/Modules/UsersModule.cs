@@ -7,15 +7,15 @@ using NancyRealWorld.Models;
 
 namespace NancyRealWorld.Modules
 {
-    public class UserModule : NancyModule
+    public class UsersModule : NancyModule
     {
-        public UserModule() : base("/user")
+        public UsersModule(): base("/users")
         {
-            
-            Get("/", args => {
+            Post("/login", args => {
+                var user = this.Bind<User>();
                 throw new NotImplementedException();
             });
-            Put("/", args => {
+            Post("/", args => {
                 var user = this.Bind<User>();
                 throw new NotImplementedException();
             });
