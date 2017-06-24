@@ -8,13 +8,23 @@ init:
 cache:
   - '%USERPROFILE%\.nuget\packages'    
 
+# environment variables
+environment:
+  my_var1: value1
+  my_var2: value2
+  # this is how to set encrypted variable. Go to "Encrypt data" page in account menu to encrypt data.
+  DOCKER_USER:
+    secure: gf+0pts+LLcI/9g9ucJHbg==
+  DOCKER_PASS:
+    secure: gZl0EINUKFlgk4axajR57w==
+
 install:
   - dir
   - nuget sources add -Name "NancyFX bleeding edge builds" -Source https://www.myget.org/F/nancyfx/api/v3/index.json
   - dotnet restore
 
 build_script:  
-  - dotnet build src/NancyRealWorld/NancyRealWorld.csproj
+  - dotnet build src/NancyRealWorld/NancyRealWorld.csproj -c Release -f netcoreapp1.1 -r win10-x64
 
 test_script:
   - dotnet test test/NancyRealWorld.Test/NancyRealWorld.Test.csproj
@@ -22,6 +32,6 @@ test_script:
 
 deploy_script:  
  - cd C:\projects\nancy-realworld-example-app
- - ps: docker build -f docker/runtime-nanoserver.dockerfile -t "codeyu/nancy-realworld-example-app:nanoserver-$env:APPVEYOR_BUILD_NUMBER" .
+ - ps: docker build -f docker/runtime-nanoserver.dockerfile -t "codeyu/nancy-realworld:nanoserver-$env:APPVEYOR_BUILD_NUMBER" .
  - ps: docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
- - ps: docker push "codeyu/nancy-realworld-example-app:nanoserver-$env:APPVEYOR_BUILD_NUMBER"
+ - ps: docker push "codeyu/nancy-realworld:nanoserver-$env:APPVEYOR_BUILD_NUMBER"
