@@ -20,11 +20,10 @@ environment:
 
 install:
   - dir
-  - nuget sources add -Name "NancyFX bleeding edge builds" -Source https://www.myget.org/F/nancyfx/api/v3/index.json
   - dotnet restore
 
 build_script:  
-  - dotnet build src/NancyRealWorld/NancyRealWorld.csproj -c Release -f netcoreapp1.1 -r win10-x64
+  - dotnet publish src/NancyRealWorld/NancyRealWorld.csproj -c Release -f netcoreapp1.1 -r win10-x64
 
 test_script:
   - dotnet test test/NancyRealWorld.Test/NancyRealWorld.Test.csproj
