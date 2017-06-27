@@ -2,26 +2,42 @@
 using System.Collections.Generic;
 using System.Text;
 using Nancy;
-using Nancy.TinyIoc;
+using Nancy.Authentication.Stateless;
+using Nancy.Bootstrapper;
+using Nancy.Bootstrappers.Autofac;
+using Autofac;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using NancyRealWorld.Infrastructure;
+
 namespace NancyRealWorld
 {
-    public class Bootstrapper : DefaultNancyBootstrapper
+    public class Bootstrapper  : BootstrapperBase
     {
-        private readonly IAppConfiguration _appConfig;
-        public Bootstrapper()
+        public Bootstrapper(IServiceCollection services, IConfigurationRoot configurationRoot)
+                :base(services, configurationRoot)                
         {
         }
 
-        public Bootstrapper(IAppConfiguration appConfig)
-        {
-            this._appConfig = appConfig;
-        }
+        protected override void ConfigureApplicationContainer(ILifetimeScope container)
+        { 
+            container.Update(builder => 
+            {
+                builder.RegisterType<IdentityProvider>().As<IIdentityProvider>();
+                builder.RegisterInstance(ConfigurationRoot.RegisterSetting<AuthSettings>(nameof(AuthSettings))).SingleInstance();
+            });
 
-        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
-        {
             base.ConfigureApplicationContainer(container);
+        }
 
-            container.Register<IAppConfiguration>(_appConfig);
+        protected override void ApplicationStartup(ILifetimeScope container, IPipelines pipelines)
+        {
+            var identityProvider = BootstraperLifetimeScope.Resolve<IIdentityProvider>();
+            var statelessAuthConfig = new StatelessAuthenticationConfiguration(identityProvider.GetUserIdentity);
+
+            StatelessAuthentication.Enable(pipelines, statelessAuthConfig);   
+
+            base.ApplicationStartup(container, pipelines);
         }
     }
 }
