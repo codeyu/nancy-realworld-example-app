@@ -9,6 +9,7 @@ namespace NancyRealWorld
 {
     public class Startup
     {
+        public static string ConnectionString { get; private set; }
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -17,6 +18,7 @@ namespace NancyRealWorld
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            ConnectionString = Configuration.GetConnectionString("RealWorldDatabase");
         }
         public IConfigurationRoot Configuration { get; }
         public IServiceCollection _services { get; private set; }
