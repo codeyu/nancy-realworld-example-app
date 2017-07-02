@@ -5,12 +5,13 @@ using System.Linq;
 using Nancy;
 using Nancy.ModelBinding;
 using NancyRealWorld.Models;
-
+using NancyRealWorld.Services;
 namespace NancyRealWorld.Modules
 {
     
     public class ArticlesModule : NancyModule
     {
+        readonly ArticlesService _service = new ArticlesService();
         public static List<Article> lst = new List<Article>();
         public ArticlesModule() : base("/articles")
         {
@@ -30,7 +31,8 @@ namespace NancyRealWorld.Modules
 
             Post("/", args => {
                 var article = this.Bind<Article>();
-                throw new NotImplementedException();
+                _service.AddArticle(article);
+                return "OK";
             });
 
             Delete("/{slug:string}", args => {

@@ -7,6 +7,7 @@ namespace NancyRealWorld.Models
 {
     public class Article
     {
+        [JsonIgnore]
         public int ArticleId { get; set; }
 
         public string Slug { get; set; }
@@ -18,6 +19,8 @@ namespace NancyRealWorld.Models
         public string Body { get; set; }
 
         public User Author { get; set; }
+
+        public List<string> TagList { get; set; }
 
         public ImmutableList<Comment> Comments {get;set; }
 

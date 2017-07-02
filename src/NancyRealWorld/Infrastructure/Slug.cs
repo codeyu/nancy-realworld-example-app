@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using UnidecodeSharpCore;
 
 namespace NancyRealWorld.Infrastructure
 {
@@ -12,6 +13,7 @@ namespace NancyRealWorld.Infrastructure
     {
         public static string GenerateSlug(this string phrase)
         {
+            phrase = phrase.Unidecode();
             string str = phrase.RemoveDiacritics().ToLower();
             // invalid chars           
             str = Regex.Replace(str, @"[^a-z0-9\s-]", "");

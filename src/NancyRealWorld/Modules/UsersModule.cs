@@ -15,6 +15,8 @@ namespace NancyRealWorld.Modules
                 var user = this.Bind<User>();
                 throw new NotImplementedException();
             });
+
+            //Register
             Post("/", args => {
                 var user = this.Bind<User>();
                 throw new NotImplementedException();

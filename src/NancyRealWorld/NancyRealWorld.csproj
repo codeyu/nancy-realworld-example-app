@@ -18,12 +18,13 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.2" />
     <PackageReference Include="Autofac" Version="4.6.0" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.1.0"/>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.1.0" />
     <PackageReference Include="Nancy" Version="2.0.0-Pre1868" />
     <PackageReference Include="Nancy.Serialization.JsonNet" Version="2.0.0-Pre491" />
-    <PackageReference Include="Nancy.Bootstrappers.Autofac" Version="2.0.0-Pre486"/>
-    <PackageReference Include="Nancy.Authentication.Stateless" Version="2.0.0-Pre1868"/>
-    <PackageReference Include="jose-jwt" Version="2.4.0"/>
-    <PackageReference Include="LiteDB" Version="3.1.1"/>
+    <PackageReference Include="Nancy.Bootstrappers.Autofac" Version="2.0.0-Pre486" />
+    <PackageReference Include="Nancy.Authentication.Stateless" Version="2.0.0-Pre1868" />
+    <PackageReference Include="jose-jwt" Version="2.4.0" />
+    <PackageReference Include="LiteDB" Version="3.1.1" />
+    <PackageReference Include="UnidecodeSharpCore" Version="1.0.0" />
   </ItemGroup>
 </Project>
