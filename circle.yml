@@ -10,6 +10,7 @@ dependencies:
       - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
       - sudo apt-get update
       - sudo apt-get install dotnet-dev-1.0.4
+      - chmod +x build.sh
   override:
     - ./build.sh build.cake --target=restore
   cache_directories:

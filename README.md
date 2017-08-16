@@ -23,3 +23,6 @@ For more information on how to this works with other frontends/backends, head ov
 
 # AppVeyor
 [![Build status](https://ci.appveyor.com/api/projects/status/bb4i7k724mutjxut?svg=true)](https://ci.appveyor.com/project/codeyu/nancy-realworld-example-app)
+
+# CircleCI
+[![CircleCI](https://circleci.com/gh/codeyu/nancy-realworld-example-app/tree/master.svg?style=svg)](https://circleci.com/gh/codeyu/nancy-realworld-example-app/tree/master)
