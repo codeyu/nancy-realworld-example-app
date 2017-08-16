@@ -23,7 +23,7 @@ install:
   - dotnet restore
 
 build_script:  
-  - dotnet publish src/NancyRealWorld/NancyRealWorld.csproj -c Release -f netcoreapp1.1 -r win10-x64
+  - dotnet publish src/NancyRealWorld/NancyRealWorld.csproj -c Release -f netcoreapp1.1
 
 test_script:
   - dotnet test test/NancyRealWorld.Test/NancyRealWorld.Test.csproj
