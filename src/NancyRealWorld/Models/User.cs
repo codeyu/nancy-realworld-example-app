@@ -33,4 +33,5 @@ namespace NancyRealWorld.Models
         [JsonIgnore]
         public byte[] Salt { get; set; }
     }
+    
 }
