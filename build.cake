@@ -14,7 +14,7 @@ Task("Build")
     {
         Framework = "netcoreapp1.1",
         Configuration = "Release",
-        Runtime = "ubuntu.16.04-x64",
+        Runtime = "ubuntu.16.10-x64",
         VersionSuffix = tag
     };
     DotNetCoreBuild(".", settings);
@@ -37,7 +37,7 @@ Task("Publish")
     {
         Framework = "netcoreapp1.1",
         Configuration = "Release",
-        Runtime = "ubuntu.16.04-x64",
+        Runtime = "ubuntu.16.10-x64",
         OutputDirectory = "./publish",
         VersionSuffix = tag
     };
