@@ -30,4 +30,4 @@ deployment:
     commands:
       - mkdir publish/
       - ./build.sh build.cake --target=publish
-      - docker build -t codeyu/nancy-realworld:latest .
+      - docker build -f docker/runtime-linux.dockerfile -t codeyu/nancy-realworld:latest .

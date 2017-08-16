@@ -10,7 +10,14 @@ Task("Restore")
 Task("Build")
   .Does(() =>
 {
-    DotNetCoreBuild(".");
+    var settings = new DotNetCoreBuildSettings
+    {
+        Framework = "netcoreapp1.1",
+        Configuration = "Release",
+        Runtime = "ubuntu.16.04-x64",
+        VersionSuffix = tag
+    };
+    DotNetCoreBuild(".", settings);
 });
 
 Task("Test")
@@ -30,6 +37,7 @@ Task("Publish")
     {
         Framework = "netcoreapp1.1",
         Configuration = "Release",
+        Runtime = "ubuntu.16.04-x64",
         OutputDirectory = "./publish",
         VersionSuffix = tag
     };
